@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolîles</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mynerve&display=swap" rel="stylesheet">
+</head>
+
+<script>
+    const textes = [
+        "Dan Sin-Dni, la vi i melanz nasyon, kot' tradisyon i res vivan.",
+        "Sent-Mari, kot' letchis i rouz ek kèr i lé dou.",
+        "Sent-Suzann, la Riviyer Dé Plu i chuchot, kot la natir i koz.",
+        "Sin-Anndré, bann zarlor la kiltir i fleri dan kèr la mas.",
+        "Bras-Panon, lavil la vani, i santi bon lo souvni lontan.",
+        "Sin-Benoît, la dilo i dans, ek la vi i pran son tan.",
+        "Sent-Roz, kot' lavi i trap lo souf lo volcan, i viv dan flambé.",
+        "Salazi, kot la brinzel i fleri ek la brume i rod senn.",
+        "Sin-Pier, ti soleil, ti vague, la vi lé dou.",
+        "Lo Tanpon lé ot, mé son kèr i bat ba dann la vi.",
+        "Sin-Zozèf, lo Sud Sovaz i koz an kréol. Ti Zîle, gran kèr, kot la natir i souri toultan.",
+        "Antr'Dé, ant dè Mòn, ant dè kèr - i gard son lam bien for.",
+        "Sin-Pòl, lo marsé i bat so kèr, i viv a fond dann so lidantité.",
+        "Dan' Port, lo batiman i voyaz, mé lo kèr i res isi.",
+        "La Posésion, kot bann montagn i koz avek lo soleil.",
+        "Sin-Leu i dans dann so vag, kèr zenes i flanm toul'tan.",
+        "Zavirons i zwenn syèl ek lar, dan kalmèr lo mèr.",
+        "Twa-Bass, zanfan la natir, kèr i trankil ek sourir i sinser."
+    ];
+
+    let currentTextIndex = 0;
+
+function updateText() {
+    const textElement = document.getElementById('texte-animate');
+    textElement.style.opacity = 0; // Pour cacher le texte avant de changer
+
+    setTimeout(() => {
+        textElement.textContent = textes[currentTextIndex];
+        currentTextIndex = (currentTextIndex + 1) % textes.length; // Revenir au début après le dernier texte
+        textElement.style.opacity = 1; // Réafficher le texte avec une animation fluide
+    }, 500); // Légère pause avant de changer le texte
+}
+
+// Change le texte toutes les 5 secondes (5000 ms) avec une animation fluide
+setInterval(updateText, 5000);
+
+// Met à jour immédiatement au chargement
+updateText();
+
+</script>
+
+
+<body>
+    <img src="1.jpg" alt="moodboard" class="moodboard">
+    <div class="image-container">
+        <img src="2.jpg" alt="moodboard" class="image2">
+        <div class="texte-dynamique" id="texte-animate"></div>
+    </div>
+    
+    <!-- À propos -->
+    <div class="typed-container" id="apropos">
+        <span id="typed-text" class="typed-text"></span>
+        <h2 id="je-suis" class="apparition">Je suis Mélissa Randriamalala</h2>
+    </div>
+
+    <!--Animation pour message de Bienvenue-->
+    <script>
+        // Texte animé en boucle pour "Bienvenue, Tongasoa, Welcome"
+            const messages = ["Bienvenue", "Tongasoa", "Welcome"];
+            const element = document.getElementById("typed-text");
+            let messageIndex = 0;
+            let charIndex = 0;
+                
+            function typeMessage() {
+            const currentMessage = messages[messageIndex];
+                if (charIndex < currentMessage.length) {
+                        element.textContent += currentMessage.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeMessage, 100);
+                } else {
+                        messageIndex = (messageIndex + 1) % messages.length;
+                        setTimeout(() => {
+                        element.textContent = '';
+                        charIndex = 0;
+                        typeMessage();
+                        }, 1500);
+                }
+                }
+                
+            typeMessage();
+
+        // Animation "Je suis Mélissa..." déclenchée quand on scroll sur #apropos
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const jeSuis = document.getElementById('je-suis');
+                        jeSuis.classList.add('start');
+                        }
+                    });
+                    }, { threshold: 0.5 });
+                
+            observer.observe(document.getElementById('apropos'));
+    </script>
+
+
+    <!--Informations de contact-->
+    <div class="contact-box inactive" id="contact-box">
+        <div class="contact-wrapper">
+            <p>07 71 05 02 27 / 037 43 326 78</p>
+            <p>melissa.randria@gmail.com</p>
+            <p>Bussy-Saint-Georges (77) / Fianarantsoa (301)</p>
+        </div>
+    </div>
+    
+    <!--Mes formations-->
+    <div class="formations">
+        <h2 class="titre-section">- Mes formations -</h2>
+        <ul>
+          <li>
+            <div class="entete-formation">
+              <span class="date date-jaune">2024-2025</span>
+              <strong class="titre-formation">Double diplôme Master Relations Publiques et Multimédia (RPM)</strong>
+              <img src="emit_logo.png" alt="Logo EMIT" class="logo-emit">
+              <img src="univ_fianarantsoa_logo.png" alt="Logo EMIT" class="logo-univfianara">
+            </div>
+            <p class="details-formation">École de Management d'Innovation Technologique (EMIT)<br>Université Fianarantsoa
+            <br>Fianarantsoa (Madagascar)</p>
+          </li>
+          
+          <li>
+            <div class="entete-formation">
+              <span class="date date-bleu">2022-2025</span>
+              <strong class="titre-formation">Master Cultures et Métiers du Web (CMW)</strong>
+              <img src="univ_gustave_eiffel_logo.png" alt="Logo EMIT" class="logo-gustave">
+            </div>
+            <p class="details-formation">Université Gustave Eiffel<br>Champs-sur-Marne (77)<br>
+              Mémoire : Le manga et les représentations sociales - Étude de cas des communautés Reddit de One Piece<br>
+              Séjours d'études : Madagascar, Corée du Sud</p>
+          </li>
+          
+
+          <li>
+            <div class="entete-formation">
+              <span class="date date-rose">2022</span>
+              <strong class="titre-formation">Licence Professionnelle Chargé de Communication Institutionnelle Corporate (LPCCIC)</strong>
+              <img src="univ_paris_saclay_logo.png" alt="Logo EMIT" class="logo-saclay">
+            </div>
+            <p class="details-formation">Université Paris Saclay<br> Evry-Courcouronnes (91)<br>
+              Mémoire : Comment la communication interne peut être moteur du changement en entreprise ?</p>
+          </li>
+      
+          <li>
+            <div class="entete-formation">
+              <span class="date date-menthe">2020</span>
+              <strong class="titre-formation">BTS Communication</strong>
+              <img src="lycee_jacques_brel_logo.png" alt="Logo EMIT" class="logo-brel">
+            </div>
+            <p class="details-formation">Lycée Jacques Brel<br>La Courneuve (93)</p>
+          </li>
+
+          <li>
+            <div class="entete-formation">
+              <span class="date date-turquoise">2018</span>
+              <strong class="titre-formation">BTS Économie Sociale et Familiale (ESF)</strong>
+              <img src="lycee_cachan_logo.png" alt="Logo Cachan" class="logo-cachan">
+            </div>
+            <p class="details-formation">Lycée Maximilien Sorre<br>Cachan (94)</p>
+          </li>
+
+          <li>
+            <div class="entete-formation">
+              <span class="date date-lilas">2016</span>
+              <strong class="titre-formation">Baccalauréat Sciences et Technologies de la Santé et du Social (ST2S)</strong>
+              <img src="cabrini_logo.png" alt="Logo Cabrini" class="logo-cabrini">
+            </div>
+            <p class="details-formation">Ensemble Françoise Cabrini<br>Noisy-le-Grand (93)</p>
+          </li>      
+        </ul>
+      </div>
+      
+
+    <!--Mes expériences professionnelles-->
+    <div class="carnet-experiences">
+        <h2 class="titre-section"> - Mes expériences professionnelles -</h2>
+      
+        <div class="experience">
+          <h3>Stagiaire - Programme Eaurizon 2025</h3>
+          <p class="periode">Sept. 2024 - Janv. 2025 | Fianarantsoa (301)</p>
+          <ul>
+            <li>Appui à la production de documentaires</li>
+            <li>Veille, entretiens, repérages terrain</li>
+            <li>Rédaction de scénarios</li>
+            <li>Organisation & cadrage des tournages</li>
+          </ul>
+        </div>
+      
+        <div class="experience">
+          <h3>Apprentie - Renault Group</h3>
+          <p class="periode">Oct. 2021 - Août 2024 | Guyancourt (78)</p>
+          <p class="poste">Chargée de Communication Interne</p>
+          <ul>
+            <li>Rédaction (newsletters, articles, Yammer)</li>
+            <li>Vidéos e-learning - Premiere Pro</li>
+            <li>Création visuelle - Canva</li>
+            <li>Animation de réunions</li>
+          </ul>
+        </div>
+      
+        <div class="experience">
+          <h3>CDI étudiant - Auchan</h3>
+          <p class="periode">Août 2018 - Sept. 2021 | Serris - Val d'Europe (77)</p>
+          <p class="poste">Hôtesse de caisse</p>
+          <ul>
+            <li>Encaissement des achats</li>
+            <li>Accueil et orientation des clients</li>
+            <li>Gestion de caisse</li>
+            <li>Application des procédures de contrôle & de sécurité</li>
+          </ul>
+        </div>
+      
+        <div class="experience">
+          <h3>Stagiaire - Moonlight Cardinal</h3>
+          <p class="periode">Déc. 2019 - Fév. 2020 | Bussy-Saint-Georges (77)</p>
+          <p class="poste">Assistante en communication</p>
+          <ul>
+            <li>Emailing</li>
+            <li>Recherche de partenariats</li>
+            <li>Tournage & montage vidéo - Premiere Pro</li>
+            <li>Création visuelle - Photoshop</li>
+            <li>Community management</li>
+            <li>Mise en forme page de vente (formation en ligne)</li>
+          </ul>
+        </div>
+      
+        <div class="experience">
+          <h3>Stagiaire - O'Studio Café</h3>
+          <p class="periode">Mai - Juin 2019 | Romainville (93)</p>
+          <p class="poste">Community manager / Relations prestataires</p>
+          <ul>
+            <li>Gestion des réseaux sociaux</li>
+            <li>Coordination avec les services de livraison</li>
+          </ul>
+        </div>
+      
+        <div class="experience">
+          <h3>Stagiaire - Croix Rouge Française</h3>
+          <p class="periode">Déc. 2017 - Janv. 2018 | Aéroport Roissy CDG - Roissy-en-France(95)</p>
+          <p class="poste">Service réfugiés</p>
+          <ul>
+            <li>Animation d'ateliers FLE</li>
+            <li>Entretien & rédaction des dossiers de demande d'asile</li>
+          </ul>
+        </div>
+    </div>
+      
+    <script>
+      function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+      }
+    
+      function animateJauges() {
+        const jauges = document.querySelectorAll('.niveau');
+        jauges.forEach(jauge => {
+          if (isInViewport(jauge) && !jauge.classList.contains('active')) {
+            jauge.classList.add('active');
+            jauge.style.width = getComputedStyle(jauge).width; // mémoriser largeur
+            jauge.style.width = '0'; // reset
+            setTimeout(() => {
+              jauge.style.transition = 'width 1.2s ease';
+              jauge.style.width = jauge.classList.contains('niveau-85') ? '85%' :
+                                  jauge.classList.contains('niveau-80') ? '80%' :
+                                  jauge.classList.contains('niveau-75') ? '75%' :
+                                  jauge.classList.contains('niveau-70') ? '70%' :
+                                  jauge.classList.contains('niveau-50') ? '50%' :
+                                  jauge.classList.contains('niveau-40') ? '40%' :
+                                  jauge.classList.contains('niveau-30') ? '30%' : '0';
+            }, 100);
+          }
+        });
+      }
+    
+      window.addEventListener('scroll', animateJauges);
+      window.addEventListener('load', animateJauges);
+    </script>
+    
+    <!--Mes compétences-->
+    <div class="mes-competences">
+      <h2 class="titre-section">- Mes compétences -</h2>
+
+      <div class="colonnes-competences">
+    
+        <!-- Hard Skills -->
+        <div class="hard">
+          <h3>Hard Skills</h3>
+    
+          <div class="competence">
+            <span>Canva</span>
+            <div class="jauge"><div class="niveau niveau-80"></div></div>
+          </div>
+    
+          <div class="competence">
+            <span>Photoshop</span>
+            <div class="jauge"><div class="niveau niveau-30"></div></div>
+          </div>
+    
+          <div class="competence">
+            <span>Premiere Pro</span>
+            <div class="jauge"><div class="niveau niveau-40"></div></div>
+          </div>
+    
+          <div class="competence">
+            <span>Community management</span>
+            <div class="jauge"><div class="niveau niveau-50"></div></div>
+          </div>
+
+          <div class="competence">
+            <span>Scénarisation & Storytelling</span>
+            <div class="jauge"><div class="niveau niveau-70"></div></div>
+          </div>
+    
+          <div class="competence">
+            <span>Rédaction de contenu</span>
+            <div class="jauge"><div class="niveau niveau-75"></div></div>
+          </div>
+        </div>
+    
+        <!-- Soft Skills -->
+        <div class="soft">
+          <h3>Soft Skills</h3>
+    
+          <div class="competence">
+            <span>Adaptabilité</span>
+            <div class="jauge"><div class="niveau niveau-80"></div></div>
+          </div>
+
+          <div class="competence">
+            <span>Communication</span>
+            <div class="jauge"><div class="niveau niveau-75"></div></div>
+          </div>
+
+          <div class="competence">
+            <span>Créativité</span>
+            <div class="jauge"><div class="niveau niveau-85"></div></div>
+          </div>
+    
+          <div class="competence">
+            <span>Organisation</span>
+            <div class="jauge"><div class="niveau niveau-70"></div></div>
+          </div>
+    
+          <div class="competence">
+            <span>Travail en équipe</span>
+            <div class="jauge"><div class="niveau niveau-75"></div></div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+
+    <!--Mes créations-->
+<div class="mes-creations">
+  <h2 class="titre-section">- Mes créations -</h2>
+  <div class="creations-container">
+    <div class="creation-item">
+      <img src="opwp6.gif" alt="blog_gif">
+      <div class="text">Blog One Piece</div>
+    </div>
+    <div class="creation-item">
+      <img src="moyaland.png" alt="moyaland">
+      <div class="text">Moyaland</div>
+    </div>
+    <div class="creation-item">
+      <img src="Windmap.png" alt="windmap">
+      <div class="text">WindMap</div>
+    </div>
+  </div>
+</div>
+
+
+    <!--Pied de page-->
+    <footer class="footer">
+        <p> © 2025 - Porfotlîles by Mélissa RANDRIAMALALA. Tous droits réservés.</p>
+    </footer>
+
+  </body>
+</html>
+
+
