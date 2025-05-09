@@ -1,0 +1,11 @@
+# Autorise tous les robots à explorer tout le site
+User-agent: *
+Allow: /
+
+# Empêche l’indexation des fichiers système ou perso (si présents)
+Disallow: /private/
+Disallow: /temp/
+Disallow: /drafts/
+
+# Emplacement du sitemap (si tu en as un)
+Sitemap: https://missamalala.github.io/Portfoliles/sitemap.xml
